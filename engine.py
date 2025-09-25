@@ -10,7 +10,8 @@ def get_chat_response(user_query: str) -> str:
     responses = {
         "dengue": [
             "Dengue symptoms include high fever, headache, joint pain, rash, and nausea.",
-            "If you have dengue, watch for fever, pain behind the eyes, and skin rash."
+            "If you have dengue, watch for fever, pain behind the eyes, and skin rash.",
+            "If you have dengue, watch for fever, pain behind the eyes."
         ],
         "covid": [
             "COVID-19 symptoms include fever, cough, fatigue, and loss of taste or smell.",
