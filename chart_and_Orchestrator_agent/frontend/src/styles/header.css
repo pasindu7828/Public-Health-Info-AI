@@ -1,0 +1,87 @@
+@import "./variables.css";
+
+.header {
+  height: 72px;
+  background: var(--teal);
+  display: grid;
+  grid-template-columns: 1fr 520px auto 40px; /* title | search | date | avatar */
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  color: var(--white);
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+
+/* Title */
+.header__title {
+  font-weight: 800;
+  font-size: 24px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* Search */
+.header__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.header__search input {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: var(--white);
+  color: #222;
+  padding: 0 14px 0 40px; /* room for icon */
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04) inset;
+}
+.header__search svg {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.9;
+}
+
+/* Date */
+.header__date {
+  font-weight: 800;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+/* Avatar (simple pill icon) */
+.header__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #0a0a0a;
+  display: grid;
+  place-items: center;
+}
+.header__avatar::after {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #000;
+  border-radius: 50%;
+  box-shadow: 0 12px 0 0 #000; /* head + body shape */
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .header {
+    grid-template-columns: 1fr 420px auto 40px;
+    gap: 16px;
+  }
+}
+@media (max-width: 720px) {
+  .header {
+    grid-template-columns: 1fr 1fr 40px;
+  }
+  .header__date { display: none; }
+}
