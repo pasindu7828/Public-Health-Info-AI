@@ -22,7 +22,9 @@ class SecurityAgent:
         self.key = Fernet.generate_key()
         self.cipher = Fernet(self.key)
 
+
     # 1) Authentication
+
     def authenticate_user(self, username: str, password: str) -> bool:
         hashed_pw = hashlib.md5(password.encode()).hexdigest()
         if username in self.allowed_users and self.allowed_users[username] == hashed_pw:
@@ -32,6 +34,7 @@ class SecurityAgent:
         return False
 
     # 2) Input validation / block-list
+
     def validate_input(self, user_input: str) -> bool:
         bad_words = [
             "hack", "attack", "drop database", "delete", "shutdown",
@@ -44,22 +47,26 @@ class SecurityAgent:
         return True
 
     # 3) Privacy masking (10-digit sequences)
+
     def mask_sensitive_data(self, text: str) -> str:
         return re.sub(r"\d{10}", "**********", text or "")
 
     # 4) Encrypt
+
     def encrypt_data(self, text: str) -> bytes:
         encrypted = self.cipher.encrypt((text or "").encode())
         logging.info("Data encrypted successfully.")
         return encrypted
 
     # 5) Decrypt
+
     def decrypt_data(self, encrypted_text: bytes) -> str:
         decrypted = self.cipher.decrypt(encrypted_text).decode()
         logging.info("Data decrypted successfully.")
         return decrypted
 
     # 6) Responsible-AI quick filter
+    
     def responsible_ai_filter(self, user_input: str) -> Tuple[bool, str]:
         unsafe = [
             "suicide", "kill myself", "harm myself", "poison",
@@ -70,5 +77,5 @@ class SecurityAgent:
         for p in unsafe:
             if p in low:
                 logging.error("Blocked unsafe health query: %s", user_input)
-                return False, "⚠️ This question may be unsafe. Please consult a certified doctor or helpline."
+                return False, " This question may be unsafe. Please consult a certified doctor or helpline."
         return True, user_input
