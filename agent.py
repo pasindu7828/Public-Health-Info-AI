@@ -11,7 +11,7 @@ from .adapters.cdc_flu import CDCFluAdapter
 from .adapters.worldbank import WorldBankAdapter
 
 nlp = spacy.load("en_core_web_sm")
-
+#updated version 1
 # Small country-name -> ISO2 fallback mapping for disease.sh
 _ISO2_MAP = {
     "sri lanka": "LK",
