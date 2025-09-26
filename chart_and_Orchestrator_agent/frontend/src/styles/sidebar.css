@@ -1,0 +1,76 @@
+@import "./variables.css";
+
+.sidebar {
+  width: 220px;              /* slightly narrower */
+  height: 100vh;
+  background: var(--teal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;           /* remove side padding → no white gap */
+  box-sizing: border-box;
+}
+
+/* Logo */
+.sidebar__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sidebar__logo img {
+  width: 220px;              /* larger logo */
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.sidebar__brand {
+  text-align: center;
+  color: var(--white);
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.sidebar__brand small {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 2px;
+}
+
+/* Nav buttons */
+.sidebar__nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;                 /* tighter gap */
+}
+
+.sidebar__btn {
+  display: block;              /* so links behave like block buttons */
+  text-align: center;
+  text-decoration: none;       /* remove underline on links */
+  width: 80%;                  /* same as before */
+  margin: 0 auto;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #3B3B3B;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+
+.sidebar__btn:hover { background: #f0f0f0; color: #3B3B3B; }
+.sidebar__btn:active { transform: scale(0.97); }
+
+.sidebar__btn--active {
+  background: var(--white);
+  color: var(--dark);
+}
