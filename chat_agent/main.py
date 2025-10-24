@@ -5,12 +5,10 @@ from .engine import get_chat_response
 
 app = FastAPI(title="Chat Agent")
 
-#ChatRequest
 class ChatRequest(BaseModel):
     message: str
     history: list[dict] = []
 
-#ChatResponse
 class ChatResponse(BaseModel):
     reply: str
 
