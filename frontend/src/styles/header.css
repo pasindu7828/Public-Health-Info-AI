@@ -1,87 +1,170 @@
-@import "./variables.css";
+/* src/styles/header.css */
 
 .header {
-  height: 72px;
-  background: var(--teal);
-  display: grid;
-  grid-template-columns: 1fr 520px auto 40px; /* title | search | date | avatar */
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  box-sizing: border-box;
-  color: var(--white);
-  border-bottom: 1px solid rgba(0,0,0,0.15);
-}
-
-/* Title */
-.header__title {
-  font-weight: 800;
-  font-size: 24px;
-  letter-spacing: 0.2px;
-  white-space: nowrap;
-}
-
-/* Search */
-.header__search {
-  position: relative;
   display: flex;
   align-items: center;
-}
-.header__search input {
-  width: 100%;
-  height: 40px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: var(--white);
-  color: #222;
-  padding: 0 14px 0 40px; /* room for icon */
-  font-weight: 700;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04) inset;
-}
-.header__search svg {
-  position: absolute;
-  left: 12px;
-  width: 18px;
-  height: 18px;
-  opacity: 0.9;
+  justify-content: space-between;
+  background: #009688; /* teal */
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-family: system-ui, sans-serif;
 }
 
-/* Date */
+.header__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 .header__date {
-  font-weight: 800;
-  font-size: 16px;
-  white-space: nowrap;
+  font-size: 0.95rem;
+  margin-left: auto;
+  margin-right: 1rem;
 }
 
-/* Avatar (simple pill icon) */
 .header__avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #0a0a0a;
-  display: grid;
-  place-items: center;
-}
-.header__avatar::after {
-  content: "";
-  width: 14px;
-  height: 14px;
-  background: #000;
-  border-radius: 50%;
-  box-shadow: 0 12px 0 0 #000; /* head + body shape */
+  background: #111;
+  cursor: pointer;
 }
 
-/* Responsive tweaks */
-@media (max-width: 1024px) {
-  .header {
-    grid-template-columns: 1fr 420px auto 40px;
-    gap: 16px;
-  }
+/* --- Search box --- */
+.header__search {
+  position: relative;
+  flex: 1;
+  max-width: 600px;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0 0.75rem;
+  color: #333;
 }
-@media (max-width: 720px) {
-  .header {
-    grid-template-columns: 1fr 1fr 40px;
+
+.header__search svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  color: #666;
+}
+
+.header__search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+}
+
+.header__clear {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.header__clear:hover {
+  color: #000;
+}
+
+/* --- Dropdown panel --- */
+.header__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 350px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+/* Section headings */
+.hdr-section {
+  padding: 0.25rem 0.75rem;
+}
+
+.hdr-section__title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+/* Suggestion & link list */
+.hdr-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hdr-item {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.hdr-item:hover {
+  background: #f5f5f5;
+}
+
+.hdr-item--phrase {
+  font-size: 0.9rem;
+  color: #222;
+}
+
+.hdr-link {
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+
+.hdr-item__title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.hdr-item__source {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* Empty state / errors */
+.hdr-empty {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.hdr-error {
+  padding: 0.5rem 0.75rem;
+  color: #b00020;
+  font-size: 0.85rem;
+}
+
+/* Spinner inline */
+.hdr-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #ccc;
+  border-top-color: #00897b;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-left: 6px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  .header__date { display: none; }
 }
