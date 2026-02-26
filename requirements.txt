@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+spacy
+pydantic
+
+cryptography==43.0.3
